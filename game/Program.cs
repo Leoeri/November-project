@@ -8,22 +8,28 @@ namespace game
         static void Main(string[] args)
         {
             string scene = "intro";
+
             int windowHeight = 600;
             int windowWidth = 800;
+            int timer = 0;
+            int point = 0;
+            int highScore = 0;
+            int whatObstacle = 1;
+            int inARow = 0;
+            int inARow2 = 0;
+
             float playerX = 100;
             float playerY = windowHeight / 4 * 3 - 30;
             float obstacleX = 801;
             float gravity = 0.1f;
             float speed = 0.1f;
-            int timer = 0;
-            int point = 0;
-            int highScore = 0;
+
             bool newGame = true;
             bool tutorial = true;
             bool cooldown = false;
-            int whatObstacle = 1;
-            int inARow = 0;
-            int inARow2 = 0;
+
+
+
             Random generator = new Random();
             Rectangle ground;
             Rectangle player;
@@ -72,12 +78,24 @@ namespace game
                         obstacle = new Rectangle((int)obstacleX, windowHeight / 4 * 3 - 50, 30, 50);
 
                     }
-                    if (whatObstacle == 2)
+                    else if (whatObstacle == 2)
                     {
                         obstacle = new Rectangle((int)obstacleX, 0, 30, 430);
                         if (tutorial)       //Om det är första gången andra hindret kommer upp visar hur man duckar
                         {
                             Raylib.DrawText("press S to duck", (int)obstacleX + 50, windowHeight / 4, 25, Color.BLACK);
+                        }
+                    }
+                    if (whatObstacle == 3)
+                    {
+                        obstacle = new Rectangle((int)obstacleX, windowHeight / 4 * 3 - 50, 60, 50);
+                    }
+                    else if (whatObstacle == 4)
+                    {
+                        obstacle = new Rectangle((int)obstacleX, 0, 60, 430);
+                        if (tutorial)       //Om det är första gången andra hindret kommer upp visar hur man duckar
+                        {
+                            Raylib.DrawText("press S to duck", (int)obstacleX + 80, windowHeight / 4, 25, Color.BLACK);
                         }
                     }
 
@@ -119,34 +137,78 @@ namespace game
                     }
 
                     obstacleX -= speed;
-                    if (obstacleX <= -30) // om hindret är utanför skärmen
+                    if (whatObstacle == 1 || whatObstacle == 2)
                     {
-                        speed += 0.01f;  // farten ökar 
-                        obstacleX = 801;
-                        point++;
-                        if (whatObstacle == 2)
+                        if (obstacleX <= -30) // om hindret är utanför skärmen
                         {
-                            tutorial = false;
-                            inARow2 += 1;
-                        }
-                        else if (whatObstacle == 1)
-                        {
-                            inARow += 1;
-                        }
+                            speed += 0.01f;  // farten ökar 
+                            obstacleX = 801;
+                            point++;
+                            if (whatObstacle == 2 || whatObstacle == 4)
+                            {
+                                tutorial = false;
+                                inARow2 += 1;
+                            }
+                            else if (whatObstacle == 1 || whatObstacle == 3)
+                            {
+                                inARow += 1;
+                            }
 
-                        whatObstacle = generator.Next(1, 3);
 
-                        if (inARow == 4)  //ser till så att det inte blir mer än 4 av samma hinder i rad
-                        {
-                            whatObstacle = 2;
-                            inARow = 0;
-                        }
-                        else if (inARow2 == 4)
-                        {
-                            whatObstacle = 1;
-                            inARow2 = 0;
+                            whatObstacle = generator.Next(1, 5);
+
+                            if (inARow == 4)  //ser till så att det inte blir mer än 4 av samma hinder i rad
+                            {
+                                whatObstacle = 2;
+                                inARow = 0;
+                            }
+                            else if (inARow2 == 4)
+                            {
+                                whatObstacle = 1;
+                                inARow2 = 0;
+                            }
+
+
                         }
                     }
+                    else if (whatObstacle == 3 || whatObstacle == 4)
+                    {
+                        if (obstacleX <= -60)
+                        {
+                            speed += 0.01f;  // farten ökar 
+                            obstacleX = 801;
+                            point++;
+                            if (whatObstacle == 2 || whatObstacle == 4)
+                            {
+                                tutorial = false;
+                                inARow2 += 1;
+                            }
+                            else if (whatObstacle == 1 || whatObstacle == 3)
+                            {
+                                inARow += 1;
+                            }
+
+
+                            whatObstacle = generator.Next(1, 5);
+
+                            if (inARow == 4)  //ser till så att det inte blir mer än 4 av samma hinder i rad
+                            {
+                                whatObstacle = 2;
+                                inARow = 0;
+                            }
+                            else if (inARow2 == 4)
+                            {
+                                whatObstacle = 1;
+                                inARow2 = 0;
+                            }
+
+
+                        }
+
+
+
+                    }
+
                     if (Raylib.CheckCollisionRecs(player, obstacle))
                     {
                         if (highScore < point)
