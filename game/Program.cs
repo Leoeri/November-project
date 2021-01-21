@@ -22,11 +22,13 @@ namespace game
             bool tutorial = true;
             bool cooldown = false;
             int whatObstacle = 1;
+            int inARow = 0;
+            int inARow2 = 0;
             Random generator = new Random();
-            Raylib.InitWindow(windowWidth, windowHeight, "The game");
             Rectangle ground;
             Rectangle player;
             Rectangle obstacle = new Rectangle((int)obstacleX, windowHeight / 4 * 3 - 50, 30, 50);
+            Raylib.InitWindow(windowWidth, windowHeight, "The game");
 
             while (!Raylib.WindowShouldClose())
             {
@@ -54,18 +56,18 @@ namespace game
 
                 if (scene == "game")
                 {
-                    if (newGame)
+                    if (newGame)   //om man startar om från game over scenen
                     {
-                        playerY = windowHeight / 4 * 3 - 30;
-                        obstacleX = 801;
-                        point = 0;
-                        speed = 0.1f;
+                        playerY = windowHeight / 4 * 3 - 30;  // start position
+                        obstacleX = 801;            //hindrets startposition
+                        point = 0;                  //poäng
+                        speed = 0.1f;               //farten av hinder
                         newGame = false;
                     }
                     Raylib.ClearBackground(Color.WHITE);
                     ground = new Rectangle(0, windowHeight / 4 * 3, windowWidth, windowHeight / 2);
                     player = new Rectangle((int)playerX, (int)playerY, 20, 30);
-                    if (whatObstacle == 1)
+                    if (whatObstacle == 1)   //kollar vilket hinder som ska placeras
                     {
                         obstacle = new Rectangle((int)obstacleX, windowHeight / 4 * 3 - 50, 30, 50);
 
@@ -73,7 +75,7 @@ namespace game
                     if (whatObstacle == 2)
                     {
                         obstacle = new Rectangle((int)obstacleX, 0, 30, 430);
-                        if (tutorial)
+                        if (tutorial)       //Om det är första gången andra hindret kommer upp visar hur man duckar
                         {
                             Raylib.DrawText("press S to duck", (int)obstacleX + 50, windowHeight / 4, 25, Color.BLACK);
                         }
@@ -81,7 +83,7 @@ namespace game
 
 
 
-                    if (Raylib.IsKeyDown(KeyboardKey.KEY_DOWN) || Raylib.IsKeyDown(KeyboardKey.KEY_S))
+                    if (Raylib.IsKeyDown(KeyboardKey.KEY_DOWN) || Raylib.IsKeyDown(KeyboardKey.KEY_S) || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_CONTROL))
                     {
                         player = new Rectangle((int)playerX, (int)playerY, 30, 20);
                     }
@@ -117,16 +119,33 @@ namespace game
                     }
 
                     obstacleX -= speed;
-                    if (obstacleX <= -30)
+                    if (obstacleX <= -30) // om hindret är utanför skärmen
                     {
-                        speed += 0.01f;
+                        speed += 0.01f;  // farten ökar 
                         obstacleX = 801;
                         point++;
                         if (whatObstacle == 2)
                         {
                             tutorial = false;
+                            inARow2 += 1;
                         }
+                        else if (whatObstacle == 1)
+                        {
+                            inARow += 1;
+                        }
+
                         whatObstacle = generator.Next(1, 3);
+
+                        if (inARow == 4)  //ser till så att det inte blir mer än 4 av samma hinder i rad
+                        {
+                            whatObstacle = 2;
+                            inARow = 0;
+                        }
+                        else if (inARow2 == 4)
+                        {
+                            whatObstacle = 1;
+                            inARow2 = 0;
+                        }
                     }
                     if (Raylib.CheckCollisionRecs(player, obstacle))
                     {
@@ -137,6 +156,7 @@ namespace game
                         scene = "game over";
                     }
                     Raylib.DrawText(point.ToString(), 5, 5, 40, Color.BLACK);
+                    buttonpressed();
                     Raylib.DrawRectangleRec(player, Color.BLACK);
                     Raylib.DrawRectangleRec(ground, Color.GRAY);
                     Raylib.DrawRectangleRec(obstacle, Color.BEIGE);
@@ -159,5 +179,25 @@ namespace game
                 Raylib.EndDrawing();
             }
         }
+
+        static void buttonpressed()  // visar vilka knappar man klickar på
+        {
+            Raylib.DrawText("space", 580, 5, 20, Color.BLACK);
+            Raylib.DrawText("w", 580, 25, 20, Color.BLACK);
+            Raylib.DrawText("up", 580, 45, 20, Color.BLACK);
+            Raylib.DrawText("ctrl", 700, 5, 20, Color.BLACK);
+            Raylib.DrawText("s", 700, 25, 20, Color.BLACK);
+            Raylib.DrawText("down", 700, 45, 20, Color.BLACK);
+
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_SPACE)) { Raylib.DrawText("space", 580, 5, 20, Color.RED); }
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_W)) { Raylib.DrawText("w", 580, 25, 20, Color.RED); }
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_UP)) { Raylib.DrawText("up", 580, 45, 20, Color.RED); }
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_CONTROL)) { Raylib.DrawText("ctrl", 700, 5, 20, Color.RED); }
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_S)) { Raylib.DrawText("s", 700, 25, 20, Color.RED); }
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_DOWN)) { Raylib.DrawText("down", 700, 45, 20, Color.RED); }
+
+        }
+
     }
+
 }

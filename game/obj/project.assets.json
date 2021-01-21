@@ -136,11 +136,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\leoer\\Desktop\\PrrPrr\\Google offline game\\game\\game.csproj",
+      "projectUniqueName": "C:\\Users\\leoer\\Desktop\\PrrPrr\\November-project\\game\\game.csproj",
       "projectName": "game",
-      "projectPath": "c:\\Users\\leoer\\Desktop\\PrrPrr\\Google offline game\\game\\game.csproj",
+      "projectPath": "C:\\Users\\leoer\\Desktop\\PrrPrr\\November-project\\game\\game.csproj",
       "packagesPath": "C:\\Users\\leoer\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\leoer\\Desktop\\PrrPrr\\Google offline game\\game\\obj\\",
+      "outputPath": "C:\\Users\\leoer\\Desktop\\PrrPrr\\November-project\\game\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\leoer\\AppData\\Roaming\\NuGet\\NuGet.Config"

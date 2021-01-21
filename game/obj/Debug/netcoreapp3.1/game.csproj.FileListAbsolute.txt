@@ -18,3 +18,23 @@ C:\Users\leoer\Desktop\PrrPrr\Google offline game\game\obj\Debug\netcoreapp3.1\g
 C:\Users\leoer\Desktop\PrrPrr\Google offline game\game\obj\Debug\netcoreapp3.1\game.dll
 C:\Users\leoer\Desktop\PrrPrr\Google offline game\game\obj\Debug\netcoreapp3.1\game.pdb
 C:\Users\leoer\Desktop\PrrPrr\Google offline game\game\obj\Debug\netcoreapp3.1\game.genruntimeconfig.cache
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\bin\Debug\netcoreapp3.1\game.exe
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\bin\Debug\netcoreapp3.1\game.deps.json
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\bin\Debug\netcoreapp3.1\game.runtimeconfig.json
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\bin\Debug\netcoreapp3.1\game.runtimeconfig.dev.json
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\bin\Debug\netcoreapp3.1\game.dll
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\bin\Debug\netcoreapp3.1\game.pdb
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\bin\Debug\netcoreapp3.1\Raylib-cs.dll
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libraylib.so
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\bin\Debug\netcoreapp3.1\runtimes\linux-x86\native\libraylib.so
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libraylib.dylib
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\raylib.dll
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\raylib.dll
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\obj\Debug\netcoreapp3.1\game.csprojAssemblyReference.cache
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\obj\Debug\netcoreapp3.1\game.AssemblyInfoInputs.cache
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\obj\Debug\netcoreapp3.1\game.AssemblyInfo.cs
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\obj\Debug\netcoreapp3.1\game.csproj.CoreCompileInputs.cache
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\obj\Debug\netcoreapp3.1\game.csproj.CopyComplete
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\obj\Debug\netcoreapp3.1\game.dll
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\obj\Debug\netcoreapp3.1\game.pdb
+C:\Users\leoer\Desktop\PrrPrr\November-project\game\obj\Debug\netcoreapp3.1\game.genruntimeconfig.cache

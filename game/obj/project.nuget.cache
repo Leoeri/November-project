@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Jfp96FC6tk9Rv4LWAkvb7DUC+00gIErJYjUPJ1skAWYkvktZHxosbNi1HVDwaa7h/OPdiYXZum87/FDtLcODow==",
+  "dgSpecHash": "86s5vvMdRhgLAIH/AyAqp4WPGi27W4w1a79ZqMpYPC3dFW+e9GvzPVSz0c7HbDVDArKQEb68MqM7549D/fSqwA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\leoer\\Desktop\\PrrPrr\\Google offline game\\game\\game.csproj",
+  "projectFilePath": "C:\\Users\\leoer\\Desktop\\PrrPrr\\November-project\\game\\game.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\leoer\\.nuget\\packages\\raylib-cs\\3.1.5\\raylib-cs.3.1.5.nupkg.sha512",
     "C:\\Users\\leoer\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
