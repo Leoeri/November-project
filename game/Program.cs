@@ -1,5 +1,6 @@
 ﻿using System;
 using Raylib_cs;
+using System.IO;
 
 namespace game
 {
@@ -8,6 +9,7 @@ namespace game
         static void Main(string[] args)
         {
             string scene = "intro";
+            string highScoreText = "0";
 
             int windowHeight = 600;
             int windowWidth = 800;
@@ -101,7 +103,7 @@ namespace game
 
 
 
-                    if (Raylib.IsKeyDown(KeyboardKey.KEY_DOWN) || Raylib.IsKeyDown(KeyboardKey.KEY_S) || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_CONTROL))
+                    if (Raylib.IsKeyDown(KeyboardKey.KEY_DOWN) || Raylib.IsKeyDown(KeyboardKey.KEY_S) || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_CONTROL)) // får spelaren att ducka
                     {
                         player = new Rectangle((int)playerX, (int)playerY, 30, 20);
                     }
@@ -117,7 +119,7 @@ namespace game
                     {
                         if (!cooldown)
                         {
-                            timer++;
+                            timer++;     //timer som räknar med hjälp av frames
                             playerY -= 0.2f;
                         }
                         if (timer >= 2000)
@@ -211,9 +213,13 @@ namespace game
 
                     if (Raylib.CheckCollisionRecs(player, obstacle))
                     {
+                        highScoreText = File.ReadAllText(@"highscore.txt");
+
+                        highScore = int.Parse(highScoreText);
                         if (highScore < point)
                         {
                             highScore = point;
+                            File.WriteAllText(@"highscore.txt", highScore.ToString());
                         }
                         scene = "game over";
                     }
